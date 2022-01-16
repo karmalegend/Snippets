@@ -43,11 +43,11 @@ with:
         },
         {
             "command": "unbound",
-            "keys": "ctrl+shift+2"
+            "keys": "ctrl+2"
         },
         {
             "command": "unbound",
-            "keys": "ctrl+2"
+            "keys": "ctrl+shift+2"
         },
         {
             "command": 
@@ -62,7 +62,7 @@ with:
             {
                 "action": "newTab"
             },
-            "keys": "ctrl+shift+t"
+            "keys": "ctrl+t"
         },
         {
             "command": "paste",
@@ -74,7 +74,7 @@ with:
                 "action": "newTab",
                 "index": 1
             },
-            "keys": "ctrl+t"
+            "keys": "ctrl+shift+t"
         },
         {
             "command": "find",
