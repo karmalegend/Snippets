@@ -1,5 +1,21 @@
+- [MsTest Initialize](#mstest-initialize)
 - [Async MSTest Method:](#async-mstest-method)
 - [MSTest Method:](#mstest-method)
+
+## MsTest Initialize
+- Shortcut:
+  - mstinit
+- Description:
+  - MsTest Initialize
+- Snippet:
+```
+[TestInitialize]
+public void TestInitialize()
+{
+    $END$
+}
+```
+
 
 
 ## Async MSTest Method:
