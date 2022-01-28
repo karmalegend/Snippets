@@ -16,6 +16,19 @@ public void TestInitialize()
 }
 ```
 
+## Async Exception Delegate
+- Shortcut:
+  - msaexcp
+- Description:
+  - An async func delegate which can be used to assert thrown exceptions
+- Snippet:
+```
+Func<Task> act = async () =>
+{
+    await $END$
+};
+```
+
 
 
 ## Async MSTest Method:
