@@ -1,8 +1,9 @@
-- [MsTest Initialize](#mstest-initialize)
-- [Async MSTest Method:](#async-mstest-method)
-- [MSTest Method:](#mstest-method)
+- [1. MsTest Initialize](#1-mstest-initialize)
+- [2. Async Exception Delegate](#2-async-exception-delegate)
+- [3. Async MSTest Method:](#3-async-mstest-method)
+- [4. MSTest Method:](#4-mstest-method)
 
-## MsTest Initialize
+## 1. MsTest Initialize
 - Shortcut:
   - mstinit
 - Description:
@@ -16,7 +17,7 @@ public void TestInitialize()
 }
 ```
 
-## Async Exception Delegate
+## 2. Async Exception Delegate
 - Shortcut:
   - msaexcp
 - Description:
@@ -31,7 +32,7 @@ Func<Task> act = async () =>
 
 
 
-## Async MSTest Method:
+## 3. Async MSTest Method:
 - Shortcut:
   - amst
 - Description:
@@ -50,7 +51,7 @@ public async Task $MethodName$()
 }
 ```
 
-## MSTest Method:
+## 4. MSTest Method:
 - Shortcut:
   - mst
 - Description:
