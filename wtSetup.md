@@ -5,6 +5,14 @@ Elavate prompt in a unix like style with sudo or gsudo
 [gsudo](https://github.com/gerardog/gsudo)
 
 
+### chocolatey
+
+Winget like packagemanager with more options:
+
+```Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iwr https://community.chocolatey.org/install.ps1 -UseBasicParsing | iex```
+
+[chocolatey](https://docs.chocolatey.org/en-us/why)
+
 ### PS $profile
 ```
 Import-Module oh-my-posh
