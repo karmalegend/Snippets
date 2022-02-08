@@ -1,3 +1,9 @@
+### GSUDO
+Elavate prompt in a unix like style with sudo or gsudo
+```winget install gerardog.gsudo```
+[gsudo](https://github.com/gerardog/gsudo)
+
+
 ### PS $profile
 ```
 Import-Module oh-my-posh
