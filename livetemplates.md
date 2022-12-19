@@ -40,7 +40,7 @@ Func<Task> act = async () =>
 - Snippet:
 ```
 [TestMethod]
-public async Task $MethodName$()
+public async Task $MethodName$_Should$Behaviour$_When$Condition$()
 {
     // Arrange
     $END$
@@ -59,7 +59,7 @@ public async Task $MethodName$()
 - Snippet:
 ```
 [TestMethod]
-public void $MethodName$()
+public void $MethodName$_Should$Behaviour$_When$Condition$()
 {
     // Arrange
     $END$
