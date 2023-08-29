@@ -69,3 +69,42 @@ public void $MethodName$_Should$Behaviour$_When$Condition$()
     Assert.AreEqual(true,false);
 }
 ```
+
+## 4. Async XUnit Test Method:
+- Shortcut:
+  - axut
+- Description:
+  - Async XUnit Method
+- Snippet:
+```
+[Fact]
+public async Task $MethodName$_Should$Behaviour$_When$Condition$()
+{
+    // Arrange
+    $END$
+    // Act
+    
+    // Assert
+    Assert.Equal(true,false);
+}
+```
+
+
+## 5. XUnit Method
+- Shortcut:
+  - xut
+- Description:
+  - XUnit Method
+- Snippet:
+```
+[Fact]
+public void $MethodName$_Should$Behaviour$_When$Condition$()
+{
+    // Arrange
+    $END$
+    // Act
+    
+    // Assert
+    Assert.Equal(true,false);
+}
+```
