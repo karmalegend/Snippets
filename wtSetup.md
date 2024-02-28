@@ -113,7 +113,7 @@ with:
     {   
         "defaults": 
         {
-            "startingDirectory":"%__CD__%", // this enables wt to start in currentDir from explorer.
+            "startingDirectory":".", // this enables wt to start in currentDir from explorer.
             "acrylicOpacity": 0.80000000000000004,
             "font": 
             {
