@@ -1,5 +1,5 @@
+# Forward pod port to local port
 ```
-
 function kube_forward() {
     while getopts p:n:r: option
     do
@@ -44,4 +44,42 @@ function kube_forward() {
     # Forward the pod to a specific local port
     kubectl port-forward -n $NAMESPACE $POD_NAME $LOCAL_PORT:$POD_PORT
 }
+```
+
+# Get pod config
+```#!/bin/zsh
+
+# Function to display the usage of the script
+usage() {
+    echo "Usage: $0 --pod <wildcard> --namespace <namespace>"
+    echo "   or: $0 -p <wildcard> -n <namespace>"
+    exit 1
+}
+
+# Parse named arguments
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        --pod|-p) wildcard="$2"; shift ;;
+        --namespace|-n) namespace="$2"; shift ;;
+        *) echo "Unknown parameter passed: $1"; usage ;;
+    esac
+    shift
+done
+
+# Check if both arguments are provided
+if [ -z "$wildcard" ] || [ -z "$namespace" ]; then
+    usage
+fi
+
+# Get the first pod name that matches the wildcard
+pod_name=$(kubectl get pods -n $namespace -o custom-columns=:metadata.name | grep $wildcard | head -n 1)
+
+# Check if a pod name was found
+if [ -z "$pod_name" ]; then
+    echo "No pod found matching wildcard '$wildcard' in namespace '$namespace'"
+    exit 1
+fi
+
+# Get and output the pod configuration
+kubectl get pod $pod_name -n $namespace -o yaml
 ```
