@@ -233,6 +233,49 @@ fi
 
 ```
 
+# Kube forward bulk
+```
+#!/bin/zsh
+
+# Function to parse the JSON and forward ports
+function automate_port_forwarding() {
+    local json_file=$1
+    local namespace=$2
+
+    # Check if jq is installed
+    if ! command -v jq &> /dev/null; then
+        echo "Error: jq is not installed. Please install jq to use this script."
+        exit 1
+    fi
+
+    # Extract the service names and ports from the JSON
+    services=$(jq -r '.ServicesConfiguration.services[] | "\(.name) \(.port)"' "$json_file")
+
+    # Loop through each service and forward the port
+    for service in ${(f)services}; do
+        local name=$(echo $service | awk '{print $1}')
+        local port=$(echo $service | awk '{print $2}')
+
+        # Generate a pod name pattern based on the service name (adjust this if needed)
+        local pod_pattern="^${name}.*"
+
+        # Call the kube_forward function with the required arguments
+        kube_forward -p "$pod_pattern" -n "$namespace" -r "$port"
+    done
+}
+
+# Main script execution
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <path_to_json> <namespace>"
+    exit 1
+fi
+
+json_file=$1
+namespace=$2
+
+automate_port_forwarding "$json_file" "$namespace"
+```
+
 # Get pod config
 ```#!/bin/zsh
 
