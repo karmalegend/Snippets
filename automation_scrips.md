@@ -11,7 +11,7 @@ usage() {
     echo "  kill                   Kill all forwarded ports"
     echo
     echo "Options:"
-    echo "  -p \"<POD_NAME_PATTERN>\"  Filter pods by name pattern"
+    echo "  -p <POD_NAME_PATTERN>  Filter pods by name pattern"
     echo "  -n <NAMESPACE>         Specify the namespace"
     echo "  -r <LOCAL_PORT>        Specify the local port"
     echo "  --help                 Display this help message"
@@ -134,9 +134,6 @@ function list_forwarded_ports() {
        fi
     done
 
-    echo "Active Ports: ${active_ports[@]}"
-    echo "Stale Ports: ${stale_ports[@]}"
-
     # Clean up stale ports from the file and memory
     if [ ${#stale_ports[@]} -gt 0 ]; then
         echo "Removing stale entries:"
@@ -156,7 +153,16 @@ function list_forwarded_ports() {
     # Output active ports
     if [ ${#active_ports[@]} -eq 0 ]; then
         echo "No active forwarded ports."
+     else
+        echo "Active ports:"
+        for entry in "${active_ports[@]}"; do
+            echo "$entry"
+        done
     fi
+    echo "Stale ports:"
+    for entry in "${stale_ports[@]}"; do
+        echo "$entry"
+    done
 }
 
 # Function to kill all forwarded ports
@@ -193,9 +199,6 @@ function kill_forwarded_ports() {
 if [[ "$1" == "--help" ]]; then
     usage
 fi
-if [[ "$#" -ne 0 ]]; then
-        usage
-fi
 if [[ "$1" == "list" ]]; then
     # List all forwarded ports without performing any forwarding
     list_forwarded_ports
@@ -218,6 +221,11 @@ else
         usage
         exit 1
     fi
+
+shift $((OPTIND - 1))
+if [[ "$#" -ne 0 ]]; then
+    usage
+fi
 
     # Forward the pod's port
     forward_port "$POD_NAME_PATTERN" "$NAMESPACE" "$LOCAL_PORT"
